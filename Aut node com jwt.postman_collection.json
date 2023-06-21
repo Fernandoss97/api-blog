@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "4fd9f66b-964e-46a8-867a-82869914a884",
+		"name": "Aut node com jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27729819"
+	},
+	"item": [
+		{
+			"name": "/ -Public route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/autores/:id - Private route",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/autor/64925a89995d0fa8d346b8af",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"autor",
+						"64925a89995d0fa8d346b8af"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/autor/registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Joana\",\r\n    \"biografia\": \"Joana .....\",\r\n    \"email\": \"joana@teste\",\r\n    \"senha\": \"jo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/autor/registro",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"autor",
+						"registro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/autenticacao/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"joana@teste\",\r\n    \"senha\": \"jo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/autenticacao/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"autenticacao",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/autor/:id - Update autor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"biografia\": \"teste 335\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/autor/64925a89995d0fa8d346b8af",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"autor",
+						"64925a89995d0fa8d346b8af"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/autor/:id - Delete autor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/autor/649255e939914adcf98711ae",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"autor",
+						"649255e939914adcf98711ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/noticia /registro - Post noticia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Sociedae no brasil\",\r\n    \"categoria\": \"soc\",\r\n    \"conteudo\": \"A soc no brasil ....\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/noticia/registro",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"noticia",
+						"registro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/noticia/:id - Delete noticia",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/noticia/64924f92251bd9c68fe40723",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"noticia",
+						"64924f92251bd9c68fe40723"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/noticia - Get noticias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/noticia/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"noticia",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/noticia/busca - Get noticia por data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/noticia/busca?titulo=Saude no brasil",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"noticia",
+						"busca"
+					],
+					"query": [
+						{
+							"key": "titulo",
+							"value": "Saude no brasil"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/noticia/:id - Update noticia",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"439\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/noticia/64925b4e995d0fa8d346b8b8",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"noticia",
+						"64925b4e995d0fa8d346b8b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/autor - Get autores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/autor",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"autor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"titulo\": \"Saude no Brasil\",\r\n    \"categoria\": \"Saude\",\r\n    \"conteudo\": \"Os hospitais publicos no Brasil\",\r\n    \"autor\": \"648a6001766bfe6d34a49480\"\r\n    \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTI1YTg5OTk1ZDBmYThkMzQ2YjhhZiIsImlhdCI6MTY4NzMxMzA1MX0.-B69rBSrCsvivRBkbQo9ggOfth5rGVwDjNkKJiAnA-8",
+			"type": "string"
+		}
+	]
+}
