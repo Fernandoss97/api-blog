@@ -24,36 +24,25 @@ class NoticiaController{
       })
   }
 
-  static listarNoticiasPorData = (request, response) =>{
-    const data = request.query.data;
+  static listarNoticiasPorBusca = (request, response) =>{
+    const { titulo , categoria, dataCriacao } = request.query;
+    const filtro = {};
 
-    noticias.find({'dataCriacao': data})
+    if(titulo){
+      filtro.titulo = titulo;
+    }
+
+    if(categoria){
+      filtro.categoria = categoria;
+    }
+
+    if(dataCriacao){
+      filtro.dataCriacao = dataCriacao;
+    }
+
+    noticias.find(filtro)
     .then((noticia) => {
-      response.status(200).send(noticias);
-    })
-    .catch((error) => {
-      response.status(404).json({msg: "Não foi possível localizar a noticia"});
-    })
-  }
-
-  static listarNoticiasPorCategoria = (request, response) =>{
-    const categoria = request.query.categoria;
-
-    noticias.find({'categoria': categoria})
-    .then((noticia) => {
-      response.status(200).send(noticias);
-    })
-    .catch((error) => {
-      response.status(404).json({msg: "Não foi possível localizar a noticia"});
-    })
-  }
-
-  static listarNoticiasPorTitulo = (request, response) =>{
-    const titulo = request.query.titulo;
-
-    noticias.find({'titulo': titulo})
-    .then((noticia) => {
-      response.status(200).send(noticias);
+      response.status(200).send(noticia);
     })
     .catch((error) => {
       response.status(404).json({msg: "Não foi possível localizar a noticia"});
