@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 class AutorController {
   static listarAutores = (request, response) => {
     autores
-      .find()
+      .find({}, {senha: 0})
       .then((autores) => {
         response.status(200).json(autores);
       })
@@ -68,6 +68,8 @@ class AutorController {
   };
 
   static atualizarAutor = async (request, response) => {
+    const {nome, biografia} = request.body;
+
     const id = request.params.id;
     const autorId = request.id;
 
@@ -83,7 +85,7 @@ class AutorController {
 
     
     await autores
-      .findByIdAndUpdate(id, { $set: request.body })
+      .findByIdAndUpdate(id, { $set: {nome: nome, biografia: biografia }})
 
       .then((result) => {
         return response

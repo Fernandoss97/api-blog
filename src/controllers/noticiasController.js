@@ -2,7 +2,22 @@ import noticias from "../models/Noticia.js"
 
 class NoticiaController{
   static listarNoticias = (request, response) => {
-    noticias.find()
+    const {titulo, categoria, dataCriacao} = request.query;
+    const filtro = {};
+
+    if(titulo){
+      filtro.titulo = titulo;
+    }
+
+    if(categoria){
+      filtro.categoria = categoria;
+    }
+
+    if(dataCriacao){
+      filtro.dataCriacao = dataCriacao;
+    }
+
+    noticias.find(filtro)
 
     .then((noticias) => {
       response.status(200).json(noticias);
@@ -22,31 +37,6 @@ class NoticiaController{
       .catch((error) => {
         response.status(400).send({message: `${error.message} - Id da noticia não localizado.`})
       })
-  }
-
-  static listarNoticiasPorBusca = (request, response) =>{
-    const { titulo , categoria, dataCriacao } = request.query;
-    const filtro = {};
-
-    if(titulo){
-      filtro.titulo = titulo;
-    }
-
-    if(categoria){
-      filtro.categoria = categoria;
-    }
-
-    if(dataCriacao){
-      filtro.dataCriacao = dataCriacao;
-    }
-
-    noticias.find(filtro)
-    .then((noticia) => {
-      response.status(200).send(noticia);
-    })
-    .catch((error) => {
-      response.status(404).json({msg: "Não foi possível localizar a noticia"});
-    })
   }
 
   static cadastrarNoticia = async (request, response) =>{

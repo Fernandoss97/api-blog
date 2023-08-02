@@ -4,8 +4,6 @@ import NoticiaController from "../controllers/noticiasController.js";
 
 const router = express.Router();
 
-
-router.get("/noticia/busca", NoticiaController.listarNoticiasPorBusca);
 router.get("/noticia/:id", NoticiaController.listarNoticiaPorId);
 router.get("/noticia", NoticiaController.listarNoticias);
 router.post("/noticia/registro", checkToken, NoticiaController.cadastrarNoticia);
